@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movies_db/app/di/injection.dart';
+import 'package:flutter_movies_db/app/modules/details/application/commands/get_cast_movie_remote_usecase.dart';
+import 'package:flutter_movies_db/app/modules/details/ui/bloc/detail_bloc.dart';
 import 'package:flutter_movies_db/app/modules/details/ui/detail_page.dart';
 import 'package:flutter_movies_db/app/modules/home/application/commands/get_movies_populars_remote_usecase.dart';
 import 'package:flutter_movies_db/app/modules/home/application/commands/get_movies_remote_usecase.dart';
@@ -39,7 +41,12 @@ mixin AppPagesRoute {
             ],
             child: const HomePage(),
           ),
-      AppRoutes.details: (BuildContext context) => const DetailPage(),
+      AppRoutes.details: (BuildContext context) =>
+          BlocProvider<DetailMovieBloc>(
+            child: const DetailPage(),
+            create: (context) => DetailMovieBloc(
+                castMovieRemoteUseCase: getItApp<GetCastMovieRemoteUsecase>()),
+          ),
     };
   }
 
