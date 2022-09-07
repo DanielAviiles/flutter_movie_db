@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies_db/app/data/models/movie/movie_model.dart';
+import 'package:flutter_movies_db/app/routes/app_routes.dart';
 
 class MoviePoster extends StatelessWidget {
   const MoviePoster({Key? key, required this.populars}) : super(key: key);
@@ -14,8 +15,10 @@ class MoviePoster extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () =>
-                Navigator.pushNamed(context, 'details', arguments: populars),
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.details,
+                  arguments: populars);
+            },
             child: Hero(
               tag: populars.heroId ?? populars.id,
               child: ClipRRect(

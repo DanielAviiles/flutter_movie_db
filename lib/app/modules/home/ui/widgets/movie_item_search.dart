@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies_db/app/data/models/movie/movie_model.dart';
+import 'package:flutter_movies_db/app/routes/app_routes.dart';
 
 class MovieItemSearch extends StatelessWidget {
   const MovieItemSearch({Key? key, required this.movie}) : super(key: key);
@@ -20,7 +21,7 @@ class MovieItemSearch extends StatelessWidget {
       title: Text(movie.title),
       subtitle: Text(movie.originalTitle),
       onTap: () {
-        Navigator.pushNamed(context, 'details', arguments: movie);
+        Navigator.pushNamed(context, AppRoutes.details, arguments: movie);
       },
     );
   }
