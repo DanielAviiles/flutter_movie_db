@@ -14,11 +14,10 @@ import 'package:flutter_movies_db/app/core/exceptions/exceptions.dart';
 import 'package:flutter_movies_db/app/core/infrastructure/remote_datasource.dart';
 import 'package:flutter_movies_db/app/core/infrastructure/remote_datasource_types.dart';
 import 'package:flutter_movies_db/app/data/models/response_api.dart';
-import 'package:flutter_movies_db/app/modules/home/domain/repository/movie_repository.dart';
 
-@Injectable(as: GetMovieRepository)
-class MovieRepositoryImpl implements GetCastMovieRepository {
-  MovieRepositoryImpl(@Named(RemoteDataSourceTypes.HTTP_DATASOURCE) this._api);
+@Injectable(as: GetCastMovieRepository)
+class CastRepositoryImpl implements GetCastMovieRepository {
+  CastRepositoryImpl(@Named(RemoteDataSourceTypes.HTTP_DATASOURCE) this._api);
 
   final RemoteDataSource _api;
 
