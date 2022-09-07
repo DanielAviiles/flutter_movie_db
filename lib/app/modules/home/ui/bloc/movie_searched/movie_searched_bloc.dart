@@ -6,7 +6,7 @@ import 'package:flutter_movies_db/app/core/errors/failure.dart';
 import 'package:flutter_movies_db/app/data/models/movie/movie_model.dart';
 import 'package:flutter_movies_db/app/modules/home/application/commands/get_search_movie_usecase.dart';
 import 'package:flutter_movies_db/app/modules/home/ui/bloc/movie_state.dart';
-import 'package:flutter_movies_db/helpers/debouncer.dart';
+import 'package:flutter_movies_db/app/core/utils/debouncer.dart';
 
 class MovieSearchedBloc extends Cubit<MovieState> {
   MovieSearchedBloc({required this.searchMovieRemoteUsecase})
