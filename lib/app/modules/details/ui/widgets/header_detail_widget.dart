@@ -15,7 +15,7 @@ class HeaderDetail extends StatelessWidget {
       child: Row(
         children: [
           Hero(
-            tag: movie.heroId!,
+            tag: movie.heroId ?? movie.id,
             child: SizedBox(
               width: size.width * .2,
               child: ClipRRect(
