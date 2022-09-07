@@ -1,5 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:flutter_movies_db/app/modules/details/application/commands/get_cast_movie_remote_usecase.dart';
+import 'package:flutter_movies_db/app/modules/details/domain/repository/cast_repository.dart';
+import 'package:flutter_movies_db/app/modules/details/ui/bloc/detail_bloc.dart';
 import 'package:flutter_movies_db/app/modules/home/ui/bloc/movie_nowplaying/movie_nowplaying_bloc.dart';
 import 'package:flutter_movies_db/app/modules/home/ui/bloc/movie_popular/movie_popular_bloc.dart';
 import 'package:flutter_movies_db/app/modules/home/ui/bloc/movie_searched/movie_searched_bloc.dart';
@@ -29,17 +32,21 @@ void registerCustoms() {
       () => MovieNowPLayingBloc(moviesRemoteUseCase: getItApp()));
   getItApp.registerLazySingleton(
       () => MovieSearchedBloc(searchMovieRemoteUsecase: getItApp()));
+  getItApp.registerLazySingleton(
+      () => DetailMovieBloc(castMovieRemoteUseCase: getItApp()));
 }
 
 void unregisterServices() {
   // REPOSITORY
   removeRegistrationIfExists<GetMovieRepository>();
   removeRegistrationIfExists<GetMovieSearchRepository>();
+  removeRegistrationIfExists<GetCastMovieRepository>();
 
   // USESCASES
   removeRegistrationIfExists<GetMoviesPopularsRemoteUsecase>();
   removeRegistrationIfExists<GetSearchMovieRemoteUsecase>();
   removeRegistrationIfExists<GetMoviesRemoteUsecase>();
+  removeRegistrationIfExists<GetCastMovieRemoteUsecase>();
 }
 
 void removeRegistrationIfExists<T extends Object>({String? instanceName}) {
